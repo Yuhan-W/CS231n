@@ -1,5 +1,6 @@
 # CS231n
-### Assignments of CS231n, 2020 Spring
+### Assignments of Stanford CS231n, 2020 Spring
+### By Yuhan Wang
 
 ### Assignment 1
 

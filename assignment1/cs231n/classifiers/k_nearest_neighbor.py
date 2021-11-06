@@ -130,7 +130,7 @@ class KNearestNeighbor(object):
         #       and two broadcast sums.                                         #
         #########################################################################
         # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
-
+        # (a-b)^2 = a^2 + b^2 - 2ab
         test_square = X ** 2
         train_square = self.X_train ** 2
         train_square = train_square.T

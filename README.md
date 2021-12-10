@@ -1,4 +1,4 @@
-# CS231n
+# [CS231n](http://cs231n.stanford.edu)
 ### Assignments of Stanford CS231n, 2020 Spring
 ### By Yuhan Wang
 

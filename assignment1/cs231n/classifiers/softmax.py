@@ -35,20 +35,14 @@ def softmax_loss_naive(W, X, y, reg):
     num_classes = W.shape[1]
     num_train = X.shape[0]
     for i in range(num_train):
-        dw1 = X[i]
-        dw1 = dw1.reshape(dw1.shape[0], 1)
         scores = X[i].dot(W)
         robscores = scores - np.max(scores) # numeric robustness
-        scores = np.exp(scores)
-        dw2 = scores
-        dw3 = np.zeros(num_classes) + 1 / np.sum(scores)
+        out = robscores / np.sum(robscores)
         correct_score = np.exp(robscores[y[i]]) / np.sum(np.exp(robscores))
-        dw3[y[i]] -= 1 / dw2[y[i]]
         loss += -np.log(correct_score)
-        delta = dw2 * dw3
-        delta = delta.reshape(1, delta.shape[0])
-        dw = dw1.dot(delta)
-        dW += dw
+        dO = out.copy()
+        dO[y[i]] -= 1
+        dW += (X[i].T).dot(dO)
 
     loss /= num_train
     loss += 0.5 * reg * np.sum(W*W)

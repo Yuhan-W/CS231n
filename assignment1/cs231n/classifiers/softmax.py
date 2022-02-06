@@ -41,8 +41,7 @@ def softmax_loss_naive(W, X, y, reg):
         robscores = scores - np.max(scores) # numeric robustness
         scores = np.exp(scores)
         dw2 = scores
-        dw3 = np.zeros(num_classes)
-        dw3 += 1 / np.sum(scores)
+        dw3 = np.zeros(num_classes) + 1 / np.sum(scores)
         correct_score = np.exp(robscores[y[i]]) / np.sum(np.exp(robscores))
         dw3[y[i]] -= 1 / dw2[y[i]]
         loss += -np.log(correct_score)
@@ -52,9 +51,9 @@ def softmax_loss_naive(W, X, y, reg):
         dW += dw
 
     loss /= num_train
-    loss += reg * np.sum(W*W)
+    loss += 0.5 * reg * np.sum(W*W)
     dW /= num_train
-    dW += 2 * reg * W
+    dW += reg * W
     # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
     return loss, dW
@@ -81,20 +80,21 @@ def softmax_loss_vectorized(W, X, y, reg):
     num_train = X.shape[0]
 
     scores = X.dot(W)
-    stabscores = scores - np.max(scores)
-    scores = np.exp(scores)
-    sum_scores = np.sum(scores, axis=1)
+    stabscores = scores - np.max(scores, axis=1).reshape(-1, 1)
     stabscores = np.exp(stabscores)
-    sum_stabscores = np.sum(stabscores, axis=1)
-    # correct_scores = scores[np.arange(num_train), y].reshape(num_train, -1)
-    # correct_scores = correct_scores / sum_scores
-    correct_scores = stabscores[np.arange(num_train), y].reshape(num_train, -1) / sum_stabscores
+    sum_stabscores = np.sum(stabscores, axis=1).reshape(-1, 1)
+    out = stabscores / sum_stabscores
+    correct_scores = stabscores[np.arange(num_train), y].reshape(-1, 1) / sum_stabscores
     loss = np.sum(-np.log(correct_scores))
     
-    loss /= num_train * num_train
-    loss += reg * np.sum(W*W)
+    loss /= num_train 
+    loss += 0.5 * reg * np.sum(W*W)
+
+    dO = out.copy()
+    dO[np.arange(num_train), y] -= 1
+    dW = (X.T).dot(dO)
     dW /= num_train
-    dW += 2 * reg * W
+    dW += reg * W
     # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
     return loss, dW

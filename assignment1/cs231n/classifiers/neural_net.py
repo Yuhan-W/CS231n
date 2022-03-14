@@ -2,6 +2,8 @@ from __future__ import print_function
 
 from builtins import range
 from builtins import object
+from operator import le
+from turtle import Vec2D
 import numpy as np
 import matplotlib.pyplot as plt
 from past.builtins import xrange
@@ -80,8 +82,9 @@ class TwoLayerNet(object):
         #############################################################################
         # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
-        pass
-
+        H = X.dot(W1) + b1
+        H[H<0] = 0
+        scores = H.dot(W2) + b2
         # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
         # If the targets are not given then jump out, we're done
@@ -98,7 +101,14 @@ class TwoLayerNet(object):
         #############################################################################
         # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
-        pass
+        stabscores = scores - np.max(scores, axis=1).reshape(-1, 1)
+        stabscores = np.exp(stabscores)
+        sum_stabscores = np.sum(stabscores, axis=1).reshape(-1, 1)
+        out = stabscores / sum_stabscores
+        correct_scores = stabscores[np.arange(N), y].reshape(-1, 1) / sum_stabscores
+        loss = np.sum(-np.log(correct_scores))
+        loss /= N 
+        loss += reg * (np.sum(W1*W1) + np.sum(W2*W2))
 
         # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
@@ -111,8 +121,18 @@ class TwoLayerNet(object):
         #############################################################################
         # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
-        pass
-
+        dO = out.copy()
+        dO[np.arange(N), y] -= 1
+        dW2 = (H.T).dot(dO) / N + 2 * reg * W2
+        grads['W2'] = dW2
+        grads['b2'] = np.sum(dO, axis=0) / N
+        dH = dO.dot(W2.T)
+        sgn = X.dot(W1) + b1
+        sgn[sgn>0] = 1
+        sgn[sgn<=0] = 0
+        dH = dH * sgn
+        grads['W1'] = (X.T).dot(dH) / N + 2 * reg * W1
+        grads['b1'] = np.sum(dH, axis=0) / N      
         # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
         return loss, grads
@@ -156,7 +176,9 @@ class TwoLayerNet(object):
             #########################################################################
             # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
-            pass
+            mask = np.random.choice(num_train, batch_size)
+            X_batch = X[mask]
+            y_batch = y[mask]
 
             # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
@@ -172,7 +194,10 @@ class TwoLayerNet(object):
             #########################################################################
             # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
-            pass
+            self.params['W1'] -= learning_rate * grads['W1']
+            self.params['W2'] -= learning_rate * grads['W2']
+            self.params['b1'] -= learning_rate * grads['b1']
+            self.params['b2'] -= learning_rate * grads['b2']
 
             # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
@@ -217,8 +242,12 @@ class TwoLayerNet(object):
         # TODO: Implement this function; it should be VERY simple!                #
         ###########################################################################
         # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
-
-        pass
+        W1, b1 = self.params['W1'], self.params['b1']
+        W2, b2 = self.params['W2'], self.params['b2']
+        H = X.dot(W1) + b1
+        H[H<0] = 0
+        scores = H.dot(W2) + b2
+        y_pred = np.argmax(scores, axis=1)
 
         # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 

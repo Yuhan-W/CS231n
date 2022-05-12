@@ -11,7 +11,7 @@ By Yuhan Wang
 
 * [Q3: Implement a Softmax classifier (20 points)](assignment1/softmax.ipynb) ✅
 
-* Q4: Two-Layer Neural Network (25 points) ✅
+* [Q4: Two-Layer Neural Network (25 points)](assignment1/two_layer_net.ipynb) ✅
 
 * Q5: Higher Level Representations: Image Features (10 points)
 

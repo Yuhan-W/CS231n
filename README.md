@@ -7,9 +7,9 @@ By Yuhan Wang
 
 * [Q1: k-Nearest Neighbor classifier (20 points)](assignment1/knn.ipynb) ✅
 
-* Q2: Training a Support Vector Machine (25 points) ✅
+* [Q2: Training a Support Vector Machine (25 points)](assignment1/svm.ipynb) ✅
 
-* Q3: Implement a Softmax classifier (20 points) ✅
+* [Q3: Implement a Softmax classifier (20 points)](assignment1/softmax.ipynb) ✅
 
 * Q4: Two-Layer Neural Network (25 points) ✅
 

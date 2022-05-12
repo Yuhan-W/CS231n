@@ -5,7 +5,7 @@ By Yuhan Wang
 
 ### Assignment 1
 
-* Q1: k-Nearest Neighbor classifier (20 points) ✅
+* [Q1: k-Nearest Neighbor classifier (20 points)](assignment1/knn.ipynb) ✅
 
 * Q2: Training a Support Vector Machine (25 points) ✅
 

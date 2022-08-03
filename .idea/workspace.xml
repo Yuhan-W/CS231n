@@ -19,9 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="76ea73cb-dda9-4dcd-84e5-979482aa8f34" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/assignment1/softmax.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/assignment1/softmax.ipynb" afterDir="false" />
-    </list>
+    <list default="true" id="76ea73cb-dda9-4dcd-84e5-979482aa8f34" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,7 +35,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Code/Code_research/autoprompt-master" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -61,5 +59,12 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="550" y="164" key="FileChooserDialogImpl" timestamp="1649238732868">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state x="550" y="164" key="FileChooserDialogImpl/0.0.1536.816@0.0.1536.816" timestamp="1649238732868" />
   </component>
 </project>

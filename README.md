@@ -1,17 +1,17 @@
 <h1 align="center"> Stanford University: CS231n </h1>
 
 ### Assignments of Stanford CS231n, 2020 Spring
-### By Yuhan Wang
+By Yuhan Wang
 
 ### Assignment 1
 
-* Q1: k-Nearest Neighbor classifier (20 points) ✅
+* [Q1: k-Nearest Neighbor classifier (20 points)](assignment1/knn.ipynb) ✅
 
-* Q2: Training a Support Vector Machine (25 points) ✅
+* [Q2: Training a Support Vector Machine (25 points)](assignment1/svm.ipynb) ✅
 
-* Q3: Implement a Softmax classifier (20 points) ✅
+* [Q3: Implement a Softmax classifier (20 points)](assignment1/softmax.ipynb) ✅
 
-* Q4: Two-Layer Neural Network (25 points) ✅
+* [Q4: Two-Layer Neural Network (25 points)](assignment1/two_layer_net.ipynb) ✅
 
 * Q5: Higher Level Representations: Image Features (10 points)
 

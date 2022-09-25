@@ -37,4 +37,4 @@ By Yuhan Wang
 
 * Q4: Style Transfer (15 points)
 
-* [Q5: Generative Adversarial Networks (15 points)](assignment3/Generative_Adversarial_Networks_Pytorch.ipynb) ✅
+* [Q5: Generative Adversarial Networks (15 points)](assignment3/Generative_Adversarial_Networks_PyTorch.ipynb) ✅
